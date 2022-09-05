@@ -1,4 +1,4 @@
-context("Visit Facebook", () => {
+context("Visit Meta", () => {
     beforeEach(() => {
         cy.visit("https://www.facebook.com");
     });
