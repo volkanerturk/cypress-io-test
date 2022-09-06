@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run chrome & npm run firefox",
-    "chrome":"./node_modules/.bin/cypress run --browser=chrome --headed --record --key fe290e49-d8ee-42f4-8058-436d673b5b63 ",
+    "chrome":"./node_modules/.bin/cypress run --browser=chrome --headed",
     "firefox":"./node_modules/.bin/cypress run --browser=firefox --headed"
 
   },
