@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run chrome & npm run firefox",
-    "chrome":"./node_modules/.bin/cypress run --record --key fe290e49-d8ee-42f4-8058-436d673b5b63",
-    "firefox":"./node_modules/.bin/cypress run --browser=firefox --headed"
+    "chrome":"./node_modules/.bin/cypress run --records--browser=chrome --headed",
+    "firefox":"./node_modules/.bin/cypress run --browser=firefox --headed",
+    "test": "cypress run",
+    "expect": "cypress-expect --passing 4",
+    "serve": "serve public",
+    "build": "echo 'building app... done!'"
 
   },
   "author": "",
