@@ -17,4 +17,4 @@ jobs:
           record: true
           env:
           # pass the Dashboard record key as an environment variable
-          CYPRESS_RECORD_KEY: "fe290e49-d8ee-42f4-8058-436d673b5b63"
+          CYPRESS_RECORD_KEY: --fe290e49-d8ee-42f4-8058-436d673b5b63
