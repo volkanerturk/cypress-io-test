@@ -1,8 +1,14 @@
 stages:
   - test
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .npm/
+
 test:
-  image: node:latest
+  image: cypress/browsers:node12.14.1-chrome85-ff81
   stage: test
   script:
     # install dependencies
@@ -10,4 +16,10 @@ test:
     # start the server in the background
     - npm run start:ci &
     # run Cypress tests
-    - npm run e2e
+    - npx cypress run --browser firefox
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
+    expire_in: 1 day
