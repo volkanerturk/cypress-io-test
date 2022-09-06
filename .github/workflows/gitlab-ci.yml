@@ -1,35 +1,50 @@
-stages:
-  - build
-  - test
+# This is a basic workflow to help you get started with Actions
 
-## Set environment variables for folders in "cache" job settings for npm modules and Cypress binary
-variables:
-  npm_config_cache: '$CI_PROJECT_DIR/.npm'
-  CYPRESS_CACHE_FOLDER: '$CI_PROJECT_DIR/cache/Cypress'
+name: Firebase Deploy Prod
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - .cache/*
-    - cache/Cypress
-    - node_modules
-    - build
+# Controls when the action will run. Triggers the workflow on push
+# events but only for the master branch
+on:
+  push:
+    branches:
+      - master
 
-## Install NPM dependencies and Cypress
-install:
-  image: cypress/browsers:node12.14.1-chrome85-ff81
-  stage: build
-  script:
-    - npm ci
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build-and-deploy"
+  build-and-deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
-ui-chrome-tests:
-  image: cypress/browsers:node12.14.1-chrome85-ff81
-  stage: test
-  parallel: 5
-  script:
-    # install dependencies
-    - npm ci
-    # start the server in the background
-    - npm run start:ci &
-    # run Cypress tests in parallel
-    - npx cypress run --record --parallel --browser chrome --group "UI - Chrome"
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs multiple command using the runners shell
+    - name: Install Dependencies
+      run: |
+        sudo npm ci
+        sudo npm install -g firebase-tools
+        sudo npm install -g @angular/cli
+        cd functions
+        sudo npm ci
+    - name: Build Prod App
+      run: |
+        ng build --prod
+    - name: Firebase Deploy Prod
+      run: |
+        firebase use sbd-main-blog --token ${{ secrets.FIREBASE_CI_TOKEN }}
+        firebase deploy --token ${{ secrets.FIREBASE_CI_TOKEN }} --non-interactive
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
