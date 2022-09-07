@@ -3,7 +3,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   });
 context('Switch tab test', function () {
     it("Visit tatil budur", () => {
-        cy.visit('https://tatilbudur.com/yurtici-oteller');
+        cy.visit('https://www.tatilbudur.com/');
     });
     it('Invoke delete and click hotel', function () {
         cy.contains("Siam Elegance Hotels Spa")
