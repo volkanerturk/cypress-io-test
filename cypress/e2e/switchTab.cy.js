@@ -1,15 +1,14 @@
 Cypress.on('uncaught:exception', (err, runnable) => {
-    // we expect a Tauri error about the window
-    // and don't want to fail the test so we return false
-    if (err.message.includes('window.__TAURI_IPC__ is not a function')) {
-      return false;
-    }
-    // we still want to ensure there are no other unexpected
-    // errors, so we let them fail the test
+    return false;
   });
-context.only('Switch tab test', function () {
+context('Switch tab test', function () {
     it("Visit tatil budur", () => {
-        cy.visit('https://www.tatilbudur.com/yurtici-oteller', { timeout: 30000 });
+        cy.visit(('https://www.tatilbudur.com/yurtici-oteller'),{
+            headers: {
+                "Accept":"application/json, text/plain, */*",
+                "User-Agent": "axios/0.18.0"
+            }
+        });
     });
     it('Invoke delete and click hotel', function () {
         cy.contains("Bodrum View Resort")
