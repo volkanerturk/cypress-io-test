@@ -1,6 +1,10 @@
 //Element Locator;
 
 class loginPage {
+    DATA={
+        'username':'volkan@test.com',
+        'password':'123456'
+    }
     elements = {
         emailInput: ()=> cy.get('[data-testid="royal_email"]'),
         passwordInput: ()=> cy.get('[data-testid="royal_pass"]'),
@@ -8,8 +12,10 @@ class loginPage {
         loginFailed: ()=> cy.get('.uiHeaderTitle')
     }
 //Type;
-    sendTypeUsername(username){
-        this.elements.emailInput().type(username);
+    sendTypeUsername(){
+        this.elements.emailInput()
+        .should('be.visible')
+        .type(this.DATA.username)
     }
     sendTypePassword(password){
         this.elements.passwordInput().type(password)
