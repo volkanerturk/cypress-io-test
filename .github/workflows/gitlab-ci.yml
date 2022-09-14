@@ -13,9 +13,9 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          browser: chrome
+          browser: parallel
           record: true
-          group: Tests on Parallel
+          group: Tests on Chrome
         env:
           # for recording test results and videos to Cypress Dashboard
           CYPRESS_RECORD_KEY: fe290e49-d8ee-42f4-8058-436d673b5b63
