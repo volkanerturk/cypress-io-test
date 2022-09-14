@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: run parallel
+      - name: Cypress run --parallel
         uses: cypress-io/github-action@v4
         with:
           browser: chrome
