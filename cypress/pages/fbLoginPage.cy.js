@@ -14,7 +14,7 @@ class loginPage {
 //Type;
     sendTypeUsername(){
         this.elements.emailInput()
-        .should('be.click')
+        .should('be.visible')
         .type(this.DATA.username)
     }
     sendTypePassword(password){

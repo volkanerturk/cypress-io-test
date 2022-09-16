@@ -16,7 +16,6 @@ jobs:
           browser: chrome
           start: run Chrome
           record: true
-          parallel: true
           group: Tests on Chrome
           
         env:
