@@ -21,5 +21,4 @@ jobs:
         env:
           # for recording test results and videos to Cypress Dashboard
           CYPRESS_RECORD_KEY: fe290e49-d8ee-42f4-8058-436d673b5b63
-=======
           start: npm run chrome
