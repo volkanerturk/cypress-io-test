@@ -13,7 +13,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-<<<<<<< HEAD
           browser: chrome
           start: run Chrome
           record: true
@@ -24,4 +23,3 @@ jobs:
           CYPRESS_RECORD_KEY: fe290e49-d8ee-42f4-8058-436d673b5b63
 =======
           start: npm run chrome
->>>>>>> parent of ad1b638 (Start parallel test)
