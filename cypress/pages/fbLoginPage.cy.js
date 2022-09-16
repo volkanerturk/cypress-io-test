@@ -11,20 +11,25 @@ class loginPage {
         loginBtn: ()=> cy.get('[data-testid="royal_login_button"]'),
         loginFailed: ()=> cy.get('.uiHeaderTitle')
     }
-//Type;
+//Function--
     sendTypeUsername(){
         this.elements.emailInput()
         .should('be.visible')
         .type(this.DATA.username)
     }
-    sendTypePassword(password){
-        this.elements.passwordInput().type(password)
+    sendTypePassword(){
+        this.elements.passwordInput()
+        .should('be.visible')
+        .type(this.DATA.password)
     }
     clickLoginBtn(){
-        this.elements.loginBtn().click()
+        this.elements.loginBtn()
+        .should('be.visible')
+        .click()
     }
     assertLogin(){
-        this.elements.loginFailed().should('be.visible')
+        this.elements.loginFailed()
+        .should('be.visible')
     }
 }
 module.exports = new loginPage();

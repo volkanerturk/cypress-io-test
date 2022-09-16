@@ -1,14 +1,17 @@
 import loginPage from '../pages/fbLoginPage.cy'
 
-context("Login Test", () => {
+context("Failed Login Test", () => {
     beforeEach(() => {
         cy.visit("https://facebook.com");
 
     });
         it("Click login buton and send user login form", () => {
-            cy.visit("https://www.facebook.com");
+            cy.request("https://www.facebook.com")
+            .its('headers')
+            .its('content-type')
+            .should('include', 'text/html; charset="utf-8');
             loginPage.sendTypeUsername();
-            loginPage.sendTypePassword('123456789');
+            loginPage.sendTypePassword();
             loginPage.clickLoginBtn(); 
             loginPage.assertLogin();           
     });
