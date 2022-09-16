@@ -2,10 +2,9 @@ import loginPage from '../pages/fbLoginPage.cy'
 
 context("Failed Login Test", () => {
     beforeEach(() => {
-        cy.visit("https://facebook.com");
-
-    });
-        it("Click login buton and send user login form", () => {
+            cy.visit("https://facebook.com");
+    });        
+    it("User login form", () => {
             cy.request("https://www.facebook.com")
             .its('headers')
             .its('content-type')
