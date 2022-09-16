@@ -6,6 +6,8 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    matrix: 
+        containers: [1, 2, 3]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -14,11 +16,10 @@ jobs:
       - name: volkan erturk test
         uses: cypress-io/github-action@v4
         with:
-          browser: chrome
+          group: Actions Example
           record: true
           parallel: true
-          matrix:
-          job: [0, 1, 2, 3]
+
         env:
           # for recording test results and videos to Cypress Dashboard
           CYPRESS_RECORD_KEY: fe290e49-d8ee-42f4-8058-436d673b5b63
