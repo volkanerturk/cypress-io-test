@@ -17,7 +17,6 @@ jobs:
           record: true
           parallel: true
           group: 'Parallel Test'
-          spec: cypress/e2e/*
           
         env:
           # for recording test results and videos to Cypress Dashboard
