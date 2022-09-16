@@ -14,7 +14,7 @@ class loginPage {
 //Type;
     sendTypeUsername(){
         this.elements.emailInput()
-        .should('be.visible')
+        .should('be.click')
         .type(this.DATA.username)
     }
     sendTypePassword(password){
@@ -27,5 +27,4 @@ class loginPage {
         this.elements.loginFailed().should('be.visible')
     }
 }
-
 module.exports = new loginPage();
