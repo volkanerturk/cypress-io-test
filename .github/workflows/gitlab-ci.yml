@@ -13,10 +13,11 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
+          browser: chrome
           start: run Chrome
           record: true
           parallel: true
-          group: 'Parallel Test'
+          group: Tests on Chrome
           
         env:
           # for recording test results and videos to Cypress Dashboard
