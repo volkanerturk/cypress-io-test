@@ -14,7 +14,7 @@ jobs:
       - name: volkan erturk test
         uses: cypress-io/github-action@v4
         with:
-          browser: --parallel
+          browser: chrome
           record: true
           parallel: true
         env:
